@@ -120,7 +120,7 @@ const CheckoutPage = () => {
                     <p className="text-xs text-gray-500">Qty: {quantity}</p>
                   </div>
                   <p className="text-sm font-semibold text-gray-800 flex-shrink-0">
-                    ${(product.price * quantity).toFixed(2)}
+                     ₹{(product.price * quantity).toFixed(2)}
                   </p>
                 </div>
               ))}
@@ -129,7 +129,7 @@ const CheckoutPage = () => {
             <div className="space-y-1 text-sm text-gray-600">
               <div className="flex justify-between">
                 <span>Subtotal</span>
-                <span>${cartTotal.toFixed(2)}</span>
+                <span> ₹{cartTotal.toFixed(2)}</span>
               </div>
               <div className="flex justify-between">
                 <span>Shipping</span>
@@ -137,7 +137,7 @@ const CheckoutPage = () => {
               </div>
               <div className="flex justify-between font-bold text-gray-800 text-base pt-1">
                 <span>Total</span>
-                <span>${(cartTotal + shipping).toFixed(2)}</span>
+                <span> ₹{(cartTotal + shipping).toFixed(2)}</span>
               </div>
             </div>
           </div>

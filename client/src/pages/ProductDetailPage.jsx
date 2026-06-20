@@ -1,6 +1,12 @@
 import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import { FaHeart, FaRegHeart, FaShoppingCart, FaMinus, FaPlus } from "react-icons/fa";
+import {
+  FaHeart,
+  FaRegHeart,
+  FaShoppingCart,
+  FaMinus,
+  FaPlus,
+} from "react-icons/fa";
 import productService from "../services/productService.js";
 import { useAuth } from "../context/AuthContext";
 import { useCart } from "../context/CartContext";
@@ -46,13 +52,19 @@ const ProductDetailPage = () => {
   const outOfStock = product.stock === 0;
 
   const handleAddToCart = async () => {
-    if (!isAuthenticated) { toast.info("Please login first"); return; }
+    if (!isAuthenticated) {
+      toast.info("Please login first");
+      return;
+    }
     await addToCart(product._id, qty);
   };
 
   const handleReviewSubmit = async (e) => {
     e.preventDefault();
-    if (!isAuthenticated) { toast.info("Please login to review"); return; }
+    if (!isAuthenticated) {
+      toast.info("Please login to review");
+      return;
+    }
     setSubmittingReview(true);
     try {
       await productService.createReview(product._id, reviewForm);
@@ -67,8 +79,14 @@ const ProductDetailPage = () => {
     }
   };
 
-  const stockColor = product.stock > 10 ? "green" : product.stock > 0 ? "yellow" : "red";
-  const stockLabel = product.stock > 10 ? "In Stock" : product.stock > 0 ? `Only ${product.stock} left` : "Out of Stock";
+  const stockColor =
+    product.stock > 10 ? "green" : product.stock > 0 ? "yellow" : "red";
+  const stockLabel =
+    product.stock > 10
+      ? "In Stock"
+      : product.stock > 0
+        ? `Only ${product.stock} left`
+        : "Out of Stock";
 
   return (
     <div className="container-custom py-10">
@@ -92,7 +110,11 @@ const ProductDetailPage = () => {
                     selectedImg === i ? "border-primary-500" : "border-gray-200"
                   }`}
                 >
-                  <img src={img.url} alt="" className="w-full h-full object-cover" />
+                  <img
+                    src={img.url}
+                    alt=""
+                    className="w-full h-full object-cover"
+                  />
                 </button>
               ))}
             </div>
@@ -107,15 +129,21 @@ const ProductDetailPage = () => {
           <h1 className="text-2xl md:text-3xl font-bold text-gray-900 mt-1 mb-3">
             {product.title}
           </h1>
-          <RatingStars rating={product.ratings} numReviews={product.numReviews} size="md" />
+          <RatingStars
+            rating={product.ratings}
+            numReviews={product.numReviews}
+            size="md"
+          />
 
           <div className="text-3xl font-extrabold text-gray-900 my-4">
-            ${product.price?.toFixed(2)}
+            ₹{product.price?.toFixed(2)}
           </div>
 
           <Badge label={stockLabel} color={stockColor} />
 
-          <p className="text-gray-600 mt-4 leading-relaxed">{product.description}</p>
+          <p className="text-gray-600 mt-4 leading-relaxed">
+            {product.description}
+          </p>
 
           {/* Quantity + Actions */}
           {!outOfStock && (
@@ -168,7 +196,9 @@ const ProductDetailPage = () => {
             Reviews ({product.numReviews})
           </h2>
           {product.reviews?.length === 0 ? (
-            <p className="text-gray-500 text-sm">No reviews yet. Be the first!</p>
+            <p className="text-gray-500 text-sm">
+              No reviews yet. Be the first!
+            </p>
           ) : (
             <div className="space-y-4">
               {product.reviews.map((r) => (
@@ -178,7 +208,9 @@ const ProductDetailPage = () => {
                       {r.name?.[0]?.toUpperCase()}
                     </div>
                     <div>
-                      <p className="font-semibold text-sm text-gray-800">{r.name}</p>
+                      <p className="font-semibold text-sm text-gray-800">
+                        {r.name}
+                      </p>
                       <RatingStars rating={r.rating} />
                     </div>
                   </div>
@@ -192,7 +224,9 @@ const ProductDetailPage = () => {
         {/* Review Form */}
         {isAuthenticated && (
           <div>
-            <h2 className="text-xl font-bold text-gray-800 mb-4">Write a Review</h2>
+            <h2 className="text-xl font-bold text-gray-800 mb-4">
+              Write a Review
+            </h2>
             <form onSubmit={handleReviewSubmit} className="card p-5 space-y-4">
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">
@@ -200,11 +234,18 @@ const ProductDetailPage = () => {
                 </label>
                 <select
                   value={reviewForm.rating}
-                  onChange={(e) => setReviewForm({ ...reviewForm, rating: Number(e.target.value) })}
+                  onChange={(e) =>
+                    setReviewForm({
+                      ...reviewForm,
+                      rating: Number(e.target.value),
+                    })
+                  }
                   className="input-field"
                 >
                   {[5, 4, 3, 2, 1].map((n) => (
-                    <option key={n} value={n}>{"★".repeat(n)} {n}/5</option>
+                    <option key={n} value={n}>
+                      {"★".repeat(n)} {n}/5
+                    </option>
                   ))}
                 </select>
               </div>
@@ -215,7 +256,9 @@ const ProductDetailPage = () => {
                 <textarea
                   rows={4}
                   value={reviewForm.comment}
-                  onChange={(e) => setReviewForm({ ...reviewForm, comment: e.target.value })}
+                  onChange={(e) =>
+                    setReviewForm({ ...reviewForm, comment: e.target.value })
+                  }
                   className="input-field resize-none"
                   placeholder="Share your experience..."
                   required

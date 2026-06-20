@@ -4,7 +4,7 @@ import generateToken from "../utils/generateToken.js";
 import cloudinary from "../config/cloudinary.js";
 import streamifier from "streamifier";
 
-// Helper: uploads a buffer to Cloudinary and returns { url, public_id }
+// Helper uploads a buffer to Cloudinary and returns url, public_id 
 const uploadToCloudinary = (buffer, folder) => {
   return new Promise((resolve, reject) => {
     const stream = cloudinary.uploader.upload_stream(
@@ -18,9 +18,9 @@ const uploadToCloudinary = (buffer, folder) => {
   });
 };
 
-// @desc    Register a new user
-// @route   POST /api/auth/register
-// @access  Public
+//Register a new user
+//POST /api/auth/register
+//@access  Public
 const registerUser = asyncHandler(async (req, res) => {
   const { name, email, password } = req.body;
 
@@ -31,7 +31,7 @@ const registerUser = asyncHandler(async (req, res) => {
     throw new Error("User with this email already exists");
   }
 
-  // Optional profile picture upload
+  //Optional profile picture upload
   let profilePicture = { url: "", public_id: "" };
   if (req.file) {
     profilePicture = await uploadToCloudinary(req.file.buffer, "shopsphere/users");
@@ -55,13 +55,13 @@ const registerUser = asyncHandler(async (req, res) => {
   }
 });
 
-// @desc    Login user & get token
-// @route   POST /api/auth/login
-// @access  Public
+// Login user & get token
+// POST /api/auth/login
+// Public
 const loginUser = asyncHandler(async (req, res) => {
   const { email, password } = req.body;
 
-  // Explicitly select password since it's excluded by default
+ 
   const user = await User.findOne({ email }).select("+password");
 
   if (user && (await user.matchPassword(password))) {

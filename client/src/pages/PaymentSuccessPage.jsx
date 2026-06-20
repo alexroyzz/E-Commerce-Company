@@ -39,7 +39,7 @@ const PaymentSuccessPage = () => {
             <div className="flex justify-between text-sm">
               <span className="text-gray-500">Total</span>
               <span className="font-bold">
-                ${order.totalAmount?.toFixed(2)}
+                ₹{order.totalAmount?.toFixed(2)}
               </span>
             </div>
             <div className="flex justify-between text-sm items-center">

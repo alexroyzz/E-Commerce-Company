@@ -48,7 +48,7 @@ const CartPage = () => {
                 <Link to={`/products/${product._id}`} className="font-semibold text-gray-800 hover:text-primary-600 line-clamp-2 text-sm">
                   {product.title}
                 </Link>
-                <p className="text-primary-600 font-bold mt-1">${product.price?.toFixed(2)}</p>
+                <p className="text-primary-600 font-bold mt-1"> ₹{product.price?.toFixed(2)}</p>
               </div>
 
               {/* Quantity Controls */}
@@ -70,7 +70,7 @@ const CartPage = () => {
               </div>
 
               <p className="font-bold text-gray-800 w-16 text-right text-sm">
-                ${(product.price * quantity).toFixed(2)}
+                 ₹{(product.price * quantity).toFixed(2)}
               </p>
 
               <button onClick={() => removeFromCart(product._id)} className="text-red-400 hover:text-red-600 ml-1">
@@ -87,7 +87,7 @@ const CartPage = () => {
             <div className="space-y-2 text-sm text-gray-600 mb-4">
               <div className="flex justify-between">
                 <span>Subtotal</span>
-                <span>${cartTotal.toFixed(2)}</span>
+                <span> ₹{cartTotal.toFixed(2)}</span>
               </div>
               <div className="flex justify-between">
                 <span>Shipping</span>
@@ -96,7 +96,7 @@ const CartPage = () => {
               <hr className="border-gray-200 my-2" />
               <div className="flex justify-between font-bold text-gray-800 text-base">
                 <span>Total</span>
-                <span>${(cartTotal >= 50 ? cartTotal : cartTotal + 5.99).toFixed(2)}</span>
+                <span> ₹{(cartTotal >= 50 ? cartTotal : cartTotal + 5.99).toFixed(2)}</span>
               </div>
             </div>
             <button

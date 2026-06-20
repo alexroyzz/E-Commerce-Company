@@ -45,13 +45,13 @@ const OrderDetailPage = () => {
                 <p className="text-sm font-medium text-gray-800 line-clamp-2">{item.title}</p>
                 <p className="text-xs text-gray-500">Qty: {item.quantity}</p>
               </div>
-              <p className="text-sm font-bold text-gray-800">${(item.price * item.quantity).toFixed(2)}</p>
+              <p className="text-sm font-bold text-gray-800"> ₹{(item.price * item.quantity).toFixed(2)}</p>
             </div>
           ))}
         </div>
         <div className="border-t border-gray-100 mt-4 pt-4 flex justify-between font-bold text-gray-800">
           <span>Total</span>
-          <span>${order.totalAmount?.toFixed(2)}</span>
+          <span> ₹{order.totalAmount?.toFixed(2)}</span>
         </div>
       </div>
 

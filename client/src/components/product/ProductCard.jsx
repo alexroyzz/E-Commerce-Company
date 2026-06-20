@@ -78,12 +78,15 @@ const ProductCard = ({ product }) => {
           </h3>
 
           {/* Rating */}
-          <RatingStars rating={product.ratings} numReviews={product.numReviews} />
+          <RatingStars
+            rating={product.ratings}
+            numReviews={product.numReviews}
+          />
 
           {/* Price & Add to Cart */}
           <div className="flex items-center justify-between mt-3">
             <span className="text-lg font-bold text-gray-900">
-              ${product.price?.toFixed(2)}
+              ₹{product.price}
             </span>
             <button
               onClick={handleAddToCart}
