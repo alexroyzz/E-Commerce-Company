@@ -4,7 +4,7 @@ import {
   FaShoppingCart, FaHeart, FaUser, FaBars, FaTimes,
   FaSearch, FaSignOutAlt, FaTachometerAlt, FaStore,
 } from "react-icons/fa";
-import { useAuth } from "../../context/AuthContext";
+import { useAuth } from "../../context/authContext";
 import { useCart } from "../../context/CartContext";
 import { useWishlist } from "../../context/WishlistContext";
 import { toast } from "react-toastify";

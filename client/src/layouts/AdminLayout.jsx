@@ -4,7 +4,7 @@ import {
   FaUsers, FaStore, FaBars, FaTimes,
 } from "react-icons/fa";
 import { useState } from "react";
-import { useAuth } from "../context/AuthContext";
+import { useAuth } from "../context/authContext";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 

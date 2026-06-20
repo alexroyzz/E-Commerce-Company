@@ -1,7 +1,7 @@
 import { createContext, useState, useEffect, useContext } from "react";
 import { toast } from "react-toastify";
 import wishlistService from "../services/wishlistService";
-import { useAuth } from "./AuthContext";
+import { useAuth } from "./authContext";
 
 const WishlistContext = createContext();
 
@@ -42,7 +42,9 @@ export const WishlistProvider = ({ children }) => {
       const data = await wishlistService.toggleWishlist(productId);
       setWishlist(data.wishlist);
       toast.success(
-        data.action === "added" ? "Added to wishlist!" : "Removed from wishlist"
+        data.action === "added"
+          ? "Added to wishlist!"
+          : "Removed from wishlist",
       );
     } catch (error) {
       toast.error("Failed to update wishlist");
@@ -76,5 +78,9 @@ export const WishlistProvider = ({ children }) => {
     fetchWishlist,
   };
 
-  return <WishlistContext.Provider value={value}>{children}</WishlistContext.Provider>;
+  return (
+    <WishlistContext.Provider value={value}>
+      {children}
+    </WishlistContext.Provider>
+  );
 };

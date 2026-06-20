@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { FaUpload, FaUser } from "react-icons/fa";
-import { useAuth } from "../context/AuthContext";
+import { useAuth } from "../context/authContext";
 import authService from "../services/authService.js";
 import { toast } from "react-toastify";
 

@@ -8,7 +8,7 @@ import {
   FaPlus,
 } from "react-icons/fa";
 import productService from "../services/productService.js";
-import { useAuth } from "../context/AuthContext";
+import { useAuth } from "../context/authContext.jsx";
 import { useCart } from "../context/CartContext";
 import { useWishlist } from "../context/WishlistContext";
 import RatingStars from "../components/ui/RatingStars";

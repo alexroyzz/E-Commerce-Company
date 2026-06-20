@@ -1,5 +1,5 @@
 import { Navigate, useLocation } from "react-router-dom";
-import { useAuth } from "../context/AuthContext";
+import { useAuth } from "../context/authContext";
 import Spinner from "../components/ui/Spinner";
 
 // Redirects unauthenticated users to /login, preserving intended destination
