@@ -1,10 +1,10 @@
 import { Link } from "react-router-dom";
 import { FaHeart, FaRegHeart, FaShoppingCart } from "react-icons/fa";
-import { useAuth } from "../../context/AuthContext";
-import { useCart } from "../../context/CartContext";
-import { useWishlist } from "../../context/WishlistContext";
+import { useAuth } from "../../context/authContext.jsx";
+import { useCart } from "../../context/CartContext.jsx";
+import { useWishlist } from "../../context/WishlistContext.jsx";
 import RatingStars from "../ui/RatingStars";
-import { PLACEHOLDER_IMAGE } from "../../utils/constants";
+import { PLACEHOLDER_IMAGE } from "../../utils/constants.js";
 import { toast } from "react-toastify";
 
 const ProductCard = ({ product }) => {
