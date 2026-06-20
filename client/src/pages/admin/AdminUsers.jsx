@@ -4,7 +4,7 @@ import Spinner from "../../components/ui/Spinner";
 import Badge from "../../components/ui/Badge";
 import { toast } from "react-toastify";
 import { FaTrash } from "react-icons/fa";
-import { useAuth } from "../../context/AuthContext";
+import { useAuth } from "../../context/authContext";
 
 const AdminUsers = () => {
   const { user: currentUser } = useAuth();
